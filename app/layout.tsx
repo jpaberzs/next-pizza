@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={nunito.variable}>
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   );

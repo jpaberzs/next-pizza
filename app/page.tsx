@@ -1,13 +1,17 @@
-import { Container, Title } from '@/components/shared';
-import { Button } from '@/components/ui/button';
+import { Container, Title, Categories, SortPopup } from '@/components/shared';
 
 export default function Page() {
   return (
     <>
       <Container>
         <Title text="Все пиццы" size="lg" className="font-extrabold mt-10" />
-        <Button variant="outline">Click me</Button>
       </Container>
+      <div className="sticky top-0 bg-white py-5 shadow-lg shadow-black/5">
+        <Container className="flex items-center justify-between">
+          <Categories />
+          <SortPopup />
+        </Container>
+      </div>
     </>
   );
 }

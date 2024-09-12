@@ -1,3 +1,7 @@
+export { CheckboxFiltersGroup } from './checkbox-filters-group';
+export { RangeSlider } from '@/components/shared/range-slider';
+export { FilterCheckbox } from '@/components/shared/filter-checkbox';
+export { Filters } from '@/components/shared/filters';
 export { SortPopup } from '@/components/shared/sort-popup';
 export { Categories } from '@/components/shared/categories';
 export { Title } from '@/components/shared/title';

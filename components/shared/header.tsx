@@ -1,3 +1,5 @@
+'use client';
+
 import { cn } from '@/lib/utils';
 import { FC } from 'react';
 import { Container } from '@/components/shared';

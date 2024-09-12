@@ -1,4 +1,5 @@
-export { CheckboxFiltersGroup } from './checkbox-filters-group';
+export { ProductCard } from '@/components/shared/product-card';
+export { CheckboxFiltersGroup } from '@/components/shared/checkbox-filters-group';
 export { RangeSlider } from '@/components/shared/range-slider';
 export { FilterCheckbox } from '@/components/shared/filter-checkbox';
 export { Filters } from '@/components/shared/filters';

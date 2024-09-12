@@ -23,6 +23,7 @@
   "rules": {
     "@typescript-eslint/comma-dangle": "off",
     "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/indent": "off"
+    "@typescript-eslint/indent": "off",
+    "@next/next/no-img-element": "off"
   }
 }

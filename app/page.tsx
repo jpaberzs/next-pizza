@@ -27,7 +27,7 @@ export default function Home() {
           <div className="flex-1">
             <div className="flex flex-col gap-16">
               <ProductsGroupList
-                categoryId={0}
+                categoryId={1}
                 items={[
                   {
                     id: 1,
@@ -51,14 +51,14 @@ export default function Home() {
                       'https://media.dodostatic.net/image/r:292x292/11EE7D6134BC4150BDD8E792D866AB52.jpg',
                   },
                   {
-                    id: 1,
+                    id: 4,
                     name: 'Пицца 1',
                     price: 150,
                     imageUrl:
                       'https://media.dodostatic.net/image/r:292x292/11EE7D6134BC4150BDD8E792D866AB52.jpg',
                   },
                   {
-                    id: 1,
+                    id: 5,
                     name: 'Пицца 1',
                     price: 150,
                     imageUrl:
@@ -68,7 +68,8 @@ export default function Home() {
                 title="Пиццы"
               />
               <ProductsGroupList
-                categoryId={0}
+                title="Комбо"
+                categoryId={2}
                 items={[
                   {
                     id: 1,
@@ -106,7 +107,6 @@ export default function Home() {
                       'https://media.dodostatic.net/image/r:292x292/11EE7D6134BC4150BDD8E792D866AB52.jpg',
                   },
                 ]}
-                title="Завтрак"
               />
             </div>
           </div>

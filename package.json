@@ -12,6 +12,7 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "@prisma/client": "^5.19.1",
     "@radix-ui/react-checkbox": "^1.1.1",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-icons": "^1.3.0",
@@ -24,6 +25,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.439.0",
     "next": "14.2.8",
+    "prisma": "^5.19.1",
     "react": "^18",
     "react-dom": "^18",
     "react-use": "^17.5.1",

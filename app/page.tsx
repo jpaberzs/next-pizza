@@ -1,4 +1,11 @@
-import { Container, Title, Categories, SortPopup, Filters, ProductCard } from '@/components/shared';
+import {
+  Container,
+  Title,
+  Categories,
+  SortPopup,
+  Filters,
+  ProductsGroupList,
+} from '@/components/shared';
 
 export default function Home() {
   return (
@@ -13,17 +20,93 @@ export default function Home() {
         </Container>
       </div>
       <Container className="mt-10 pb-14">
-        <div className="flex gap-[60px]">
+        <div className="flex gap-[80px]">
           <div className="w-[250px]">
             <Filters />
           </div>
           <div className="flex-1">
             <div className="flex flex-col gap-16">
-              <ProductCard
-                id={0}
-                name="Чизбургер-пицца"
-                price={550}
-                imageUrl="https://media.dodostatic.net/image/r:292x292/11EE7D610E8BBB248F31270BE742B4BD.jpg"
+              <ProductsGroupList
+                categoryId={0}
+                items={[
+                  {
+                    id: 1,
+                    name: 'Пицца 1',
+                    price: 150,
+                    imageUrl:
+                      'https://media.dodostatic.net/image/r:292x292/11EE7D6134BC4150BDD8E792D866AB52.jpg',
+                  },
+                  {
+                    id: 2,
+                    name: 'Пицца 2',
+                    price: 250,
+                    imageUrl:
+                      'https://media.dodostatic.net/image/r:292x292/11EE7D6134BC4150BDD8E792D866AB52.jpg',
+                  },
+                  {
+                    id: 3,
+                    name: 'Пицца 1',
+                    price: 150,
+                    imageUrl:
+                      'https://media.dodostatic.net/image/r:292x292/11EE7D6134BC4150BDD8E792D866AB52.jpg',
+                  },
+                  {
+                    id: 1,
+                    name: 'Пицца 1',
+                    price: 150,
+                    imageUrl:
+                      'https://media.dodostatic.net/image/r:292x292/11EE7D6134BC4150BDD8E792D866AB52.jpg',
+                  },
+                  {
+                    id: 1,
+                    name: 'Пицца 1',
+                    price: 150,
+                    imageUrl:
+                      'https://media.dodostatic.net/image/r:292x292/11EE7D6134BC4150BDD8E792D866AB52.jpg',
+                  },
+                ]}
+                title="Пиццы"
+              />
+              <ProductsGroupList
+                categoryId={0}
+                items={[
+                  {
+                    id: 1,
+                    name: 'Пицца 1',
+                    price: 150,
+                    imageUrl:
+                      'https://media.dodostatic.net/image/r:292x292/11EE7D6134BC4150BDD8E792D866AB52.jpg',
+                  },
+                  {
+                    id: 2,
+                    name: 'Пицца 2',
+                    price: 250,
+                    imageUrl:
+                      'https://media.dodostatic.net/image/r:292x292/11EE7D6134BC4150BDD8E792D866AB52.jpg',
+                  },
+                  {
+                    id: 3,
+                    name: 'Пицца 1',
+                    price: 150,
+                    imageUrl:
+                      'https://media.dodostatic.net/image/r:292x292/11EE7D6134BC4150BDD8E792D866AB52.jpg',
+                  },
+                  {
+                    id: 1,
+                    name: 'Пицца 1',
+                    price: 150,
+                    imageUrl:
+                      'https://media.dodostatic.net/image/r:292x292/11EE7D6134BC4150BDD8E792D866AB52.jpg',
+                  },
+                  {
+                    id: 1,
+                    name: 'Пицца 1',
+                    price: 150,
+                    imageUrl:
+                      'https://media.dodostatic.net/image/r:292x292/11EE7D6134BC4150BDD8E792D866AB52.jpg',
+                  },
+                ]}
+                title="Завтрак"
               />
             </div>
           </div>

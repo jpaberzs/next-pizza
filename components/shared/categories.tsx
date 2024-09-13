@@ -17,7 +17,6 @@ const categories = [
   { id: 5, name: 'Кофе' },
   { id: 6, name: 'Напитки' },
   { id: 7, name: 'Десерты' },
-  { id: 8, name: 'Десерты' },
 ];
 
 export const Categories: FC<Props> = ({ className }) => {

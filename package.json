@@ -9,7 +9,9 @@
     "lint": "next lint",
     "lint:fix": "eslint --fix .",
     "prepare": "husky",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "prisma:push": "prisma db push",
+    "prisma:studio": "prisma studio"
   },
   "dependencies": {
     "@prisma/client": "^5.19.1",

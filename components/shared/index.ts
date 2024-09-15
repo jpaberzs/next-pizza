@@ -1,3 +1,4 @@
+export { SearchInput } from './search-input';
 export { ProductsGroupList } from '@/components/shared/products-group-list';
 export { ProductCard } from '@/components/shared/product-card';
 export { CheckboxFiltersGroup } from '@/components/shared/checkbox-filters-group';

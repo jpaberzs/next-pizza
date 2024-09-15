@@ -59,7 +59,8 @@ export const SearchInput: FC<Props> = ({ className }) => {
           )}>
           {products.map((product, index) => (
             <Link
-              href="#"
+              onClick={() => setFocused(false)}
+              href={`/product/${product.id}`}
               key={index}
               className="flex items-center px-3 py-2 hover:bg-primary/10 transition-all duration-200">
               <img

@@ -33,13 +33,14 @@ export const ProductsGroupList: FC<Props> = ({ title, items, className, category
     <div className={cn(className)} id={title} ref={intersectionRef}>
       <Title text={title} size="lg" className="font-extrabold mb-5" />
       <div className="grid grid-cols-3 gap-[50px]">
+        {items[0].size}
         {items.map((item, i) => (
           <ProductCard
             key={i}
             name={item.name}
             id={item.id}
             imageUrl={item.imageUrl}
-            price={item.price}
+            price={item.productItems[0].price}
           />
         ))}
       </div>

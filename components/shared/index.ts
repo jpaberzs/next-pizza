@@ -1,3 +1,5 @@
+export { GroupVariants } from './group-variants';
+export { ProductImage } from './product-image';
 export { SearchInput } from './search-input';
 export { ProductsGroupList } from '@/components/shared/products-group-list';
 export { ProductCard } from '@/components/shared/product-card';

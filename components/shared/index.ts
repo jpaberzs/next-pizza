@@ -1,3 +1,5 @@
+export { ChoosePizzaForm } from './choose-pizza-form';
+export { ChooseProductModal } from './modals/choose-product-modal';
 export { GroupVariants } from './group-variants';
 export { ProductImage } from './product-image';
 export { SearchInput } from './search-input';

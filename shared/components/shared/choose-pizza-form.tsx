@@ -1,17 +1,20 @@
+'use client';
+
 import { FC } from 'react';
 import { cn } from '@/shared/lib/utils';
 import { Ingredient, ProductItem } from '@prisma/client';
-import { GroupVariants, ProductImage, Title } from '@/shared/components/shared';
+import { GroupVariants, Ingredients, ProductImage, Title } from '@/shared/components/shared';
 import { Button } from '../ui';
-import { pizzaSizes } from '@/shared/constants/pizza';
+import { PizzaSize, PizzaType, pizzaTypes } from '@/shared/constants/pizza';
+import { usePizzaOptions } from '@/shared/hooks';
+import { getPizzaDetails } from '@/shared/lib';
 
 interface Props {
   imageUrl: string;
   name: string;
   ingredients: Ingredient[];
   items: ProductItem[];
-  loading?: boolean;
-  onSubmit: (itemId: number, ingredients: number[]) => void;
+  onSubmit: () => void;
   className?: string;
 }
 
@@ -20,14 +23,28 @@ export const ChoosePizzaForm: FC<Props> = ({
   name,
   ingredients,
   items,
-  loading,
   onSubmit,
   className,
 }) => {
-  const textDetaills =
-    'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas, explicabo.';
-  const totalPrice = '350';
-  const size = 30;
+  const { size, type, selectedIngredients, availablePizzaSizes, addIngredient, setSize, setType } =
+    usePizzaOptions(items);
+
+  const { textDetaills, totalPrice } = getPizzaDetails(
+    type,
+    size,
+    items,
+    ingredients,
+    selectedIngredients,
+  );
+
+  const handleClick = () => {
+    onSubmit();
+    console.log({
+      size,
+      type,
+      ingredients: selectedIngredients,
+    });
+  };
 
   return (
     <div className={cn('flex flex-1', className)}>
@@ -36,8 +53,35 @@ export const ChoosePizzaForm: FC<Props> = ({
       <div className="w-[490px] bg-[#f7f6f5] p-7 flex flex-col">
         <Title text={name} size="md" className="font-extrabold mb-1" />
         <p className="text-gray-400 mb-3">{textDetaills}</p>
-        <GroupVariants items={pizzaSizes} />
-        <Button className="h-[55px] px-10 text-base rounded-[18px] w-full mt-auto">
+        <GroupVariants
+          items={availablePizzaSizes}
+          value={String(size)}
+          onClick={(value) => setSize(Number(value) as PizzaSize)}
+          className="mb-1"
+        />
+        <GroupVariants
+          items={pizzaTypes}
+          value={String(type)}
+          onClick={(value) => setType(Number(value) as PizzaType)}
+          className="mb-3 *:capitalize"
+        />
+        <div className="bg-gray-50 p-5 rounded-md h-[420px] overflow-auto scrollbar">
+          <div className="grid grid-cols-3 gap-3">
+            {ingredients.map((ingredient) => (
+              <Ingredients
+                key={ingredient.id}
+                imageUrl={ingredient.imageUrl}
+                name={ingredient.name}
+                price={ingredient.price}
+                active={selectedIngredients.has(ingredient.id)}
+                onClick={() => addIngredient(ingredient.id)}
+              />
+            ))}
+          </div>
+        </div>
+        <Button
+          onClick={handleClick}
+          className="h-[55px] px-10 text-base rounded-[18px] w-full mt-auto">
           Добавить в корзину за {totalPrice} ₽
         </Button>
       </div>

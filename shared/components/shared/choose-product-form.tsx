@@ -1,16 +1,12 @@
 import { FC } from 'react';
 import { cn } from '@/shared/lib/utils';
-import { Ingredient, ProductItem } from '@prisma/client';
-import { ProductImage, Title } from '@/shared/components/shared';
+import { Title } from '@/shared/components/shared';
 import { Button } from '../ui';
 
 interface Props {
   imageUrl: string;
   name: string;
-  ingredients: Ingredient[];
-  items: ProductItem[];
-  loading?: boolean;
-  onSubmit: (itemId: number, ingredients: number[]) => void;
+  onSubmit: () => void;
   className?: string;
 }
 
@@ -33,7 +29,9 @@ export const ChooseProductForm: FC<Props> = ({ imageUrl, name, onSubmit, classNa
         <Title text={name} size="md" className="font-extrabold mb-1" />
         <p className="text-gray-400 mb-10">{textDetaills}</p>
 
-        <Button className="h-[55px] px-10 text-base rounded-[18px] w-full mt-auto">
+        <Button
+          onClick={onSubmit}
+          className="h-[55px] px-10 text-base rounded-[18px] w-full mt-auto">
           Добавить в корзину за {totalPrice} ₽
         </Button>
       </div>

@@ -34,8 +34,8 @@ export const ChooseProductModal: FC<Props> = ({ product, className }) => {
           <ChoosePizzaForm
             imageUrl={product.imageUrl}
             name={product.name}
-            ingredients={[]}
-            items={[]}
+            ingredients={product.ingredients}
+            items={product.productItems}
             onSubmit={() => console.log(123)}
           />
         ) : (

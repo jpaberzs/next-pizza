@@ -33,15 +33,11 @@ export const CartDrawerItem: FC<Props> = ({
         className,
       )}>
       <CartItem.Image src={imageUrl} />
-
       <div className="flex-1">
         <CartItem.Info name={name} details={details} />
-
         <hr className="my-3" />
-
         <div className="flex items-center justify-between">
           <CountButton onClick={onClickCountButton} value={quantity} />
-
           <div className="flex items-center gap-3">
             <CartItem.Price value={price} />
             <Trash2Icon

@@ -8,13 +8,16 @@ interface Props {
   name: string;
   onSubmit: () => void;
   className?: string;
+  totalPrice: number;
 }
 
-export const ChooseProductForm: FC<Props> = ({ imageUrl, name, onSubmit, className }) => {
-  const textDetaills =
-    'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas, explicabo.';
-  const totalPrice = '350';
-
+export const ChooseProductForm: FC<Props> = ({
+  imageUrl,
+  name,
+  totalPrice,
+  onSubmit,
+  className,
+}) => {
   return (
     <div className={cn('flex flex-1', className)}>
       <div className="flex items-center justify-center flex-1 relative w-full">
@@ -27,7 +30,6 @@ export const ChooseProductForm: FC<Props> = ({ imageUrl, name, onSubmit, classNa
 
       <div className="w-[490px] bg-[#f7f6f5] p-7 flex flex-col">
         <Title text={name} size="md" className="font-extrabold mb-1" />
-        <p className="text-gray-400 mb-10">{textDetaills}</p>
 
         <Button
           onClick={onSubmit}

@@ -1,3 +1,4 @@
+export { ProductForm } from './product-form';
 export { CartDrawerItem } from '@/shared/components/shared/cart-drawer-item';
 export { CartDrawer } from '@/shared/components/shared/cart-drawer';
 export { CartButton } from '@/shared/components/shared/cart-button';

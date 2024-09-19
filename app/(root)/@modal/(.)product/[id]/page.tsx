@@ -1,6 +1,7 @@
 import { ChooseProductModal } from '@/shared/components/shared';
 import prisma from '@/prisma/prisma-client';
 import React from 'react';
+import { notFound } from 'next/navigation';
 
 interface Props {
   params: {
@@ -19,8 +20,7 @@ export default async function ProductModalPage({ params: { id } }: Props) {
     },
   });
 
-  if (!product) return;
-  // if (!product) return notFound();
+  if (!product) return notFound();
 
   return <ChooseProductModal product={product}></ChooseProductModal>;
 }

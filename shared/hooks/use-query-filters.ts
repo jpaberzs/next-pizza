@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { FiltersProps } from './use-filters';
 import QueryString from 'qs';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 export const useQueryFilters = (filters: FiltersProps) => {
+  const pathname = usePathname();
   const router = useRouter();
 
   useEffect(() => {
@@ -16,6 +17,8 @@ export const useQueryFilters = (filters: FiltersProps) => {
 
     const queryString = QueryString.stringify(params, { arrayFormat: 'comma' });
 
-    router.push(`?${queryString}`, { scroll: false });
-  }, [filters, router]);
+    if (pathname === '/') {
+      router.push(`?${queryString}`, { scroll: false });
+    }
+  }, [pathname, filters, router]);
 };

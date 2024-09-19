@@ -17,8 +17,6 @@ export const useQueryFilters = (filters: FiltersProps) => {
 
     const queryString = QueryString.stringify(params, { arrayFormat: 'comma' });
 
-    if (pathname === '/') {
-      router.push(`?${queryString}`, { scroll: false });
-    }
+    if (pathname === '/') router.push(`?${queryString}`, { scroll: false });
   }, [pathname, filters, router]);
 };

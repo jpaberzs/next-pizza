@@ -12,6 +12,7 @@ import { ChoosePizzaForm, ChooseProductForm } from '@/shared/components/shared';
 import { ProductWithRelations } from '@/@types/prisma';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/shared/store/cart';
+import toast from 'react-hot-toast';
 
 interface Props {
   product: ProductWithRelations;
@@ -22,19 +23,23 @@ export const ChooseProductModal: FC<Props> = ({ product, className }) => {
   const router = useRouter();
   const firstItem = product.productItems[0];
   const isPizzaForm = Boolean(firstItem.pizzaType);
-  const addCartItem = useCartStore((state) => state.addCartItem);
+  const [addCartItem, loading] = useCartStore((state) => [state.addCartItem, state.loading]);
 
-  const onAddProduct = () => {
-    addCartItem({
-      productItemId: firstItem.id,
-    });
-  };
+  const onSubmit = async (productItemId?: number, ingredients?: number[]) => {
+    try {
+      const itemId = productItemId ?? firstItem.id;
 
-  const onAddPizza = (productItemId: number, ingredients: number[]) => {
-    addCartItem({
-      productItemId,
-      ingredients,
-    });
+      await addCartItem({
+        productItemId: itemId,
+        ingredients,
+      });
+
+      toast.success(product.name + ' добавлена в корзину');
+      router.back();
+    } catch (err) {
+      toast.error('Не удалось добавить товар в корзину');
+      console.error(err);
+    }
   };
 
   return (
@@ -52,14 +57,16 @@ export const ChooseProductModal: FC<Props> = ({ product, className }) => {
             name={product.name}
             ingredients={product.ingredients}
             items={product.productItems}
-            onSubmit={onAddPizza}
+            onSubmit={onSubmit}
+            loading={loading}
           />
         ) : (
           <ChooseProductForm
             imageUrl={product.imageUrl}
             name={product.name}
-            onSubmit={onAddProduct}
+            onSubmit={onSubmit}
             totalPrice={firstItem.price}
+            loading={loading}
           />
         )}
       </DialogContent>

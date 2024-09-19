@@ -11,7 +11,8 @@ interface Props {
 export default async function ProductPage({ params: { id } }: Props) {
   const product = await prisma.product.findFirst({ where: { id: Number(id) } });
 
-  if (!product) return notFound();
+  if (!product) return;
+  // if (!product) return notFound();
 
   return (
     <Container className="flex flex-col my-10">

@@ -19,7 +19,8 @@ export default async function ProductModalPage({ params: { id } }: Props) {
     },
   });
 
-  if (!product) return notFound();
+  if (!product) return;
+  // if (!product) return notFound();
 
   return <ChooseProductModal product={product}></ChooseProductModal>;
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, PropsWithChildren, useEffect } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import {
   Sheet,
   SheetClose,
@@ -15,29 +15,17 @@ import { Button } from '../ui';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { CartDrawerItem, Title } from '@/shared/components/shared';
 import { getCartItemDetails } from '@/shared/lib';
-import { useCartStore } from '@/shared/store/cart';
 import { PizzaSize, PizzaType } from '@/shared/constants/pizza';
 import Image from 'next/image';
 import { cn } from '@/shared/lib/utils';
+import { useCart } from '@/shared/hooks';
 
 interface Props {
   className?: string;
 }
 
 export const CartDrawer: FC<PropsWithChildren<Props>> = ({ children }) => {
-  const [totalAmount, fetchCartItems, updateItemQuantity, removeCartItem, items] = useCartStore(
-    (state) => [
-      state.totalAmount,
-      state.fetchCartItems,
-      state.updateItemQuantity,
-      state.removeCartItem,
-      state.items,
-    ],
-  );
-
-  useEffect(() => {
-    fetchCartItems();
-  }, []);
+  const { totalAmount, updateItemQuantity, removeCartItem, items } = useCart();
 
   const onClickCountButton = (id: number, quantity: number, type: 'plus' | 'minus') => {
     const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;

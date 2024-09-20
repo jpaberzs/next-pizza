@@ -1,4 +1,8 @@
-export { ProductForm } from './product-form';
+export { AdressInput } from './address-input';
+export { CheckoutItemDetails } from './checkout-item-details';
+export { CheckoutItemSkeleton } from './checkout-item-skeleton';
+export { WhiteBlock } from '@/shared/components/shared/white-block';
+export { ProductForm } from '@/shared/components/shared/product-form';
 export { CartDrawerItem } from '@/shared/components/shared/cart-drawer-item';
 export { CartDrawer } from '@/shared/components/shared/cart-drawer';
 export { CartButton } from '@/shared/components/shared/cart-button';

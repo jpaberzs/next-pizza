@@ -12,9 +12,11 @@ import {
 } from '@/shared/components/shared/checkout';
 import { checkoutFormSchema, CheckoutFormValues } from '@/shared/constants/checkout-form-schema';
 import { useState } from 'react';
+import { createOrder } from '@/app/actions';
+import toast from 'react-hot-toast';
 
 const CheckoutPage = () => {
-  const [submitting] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const { totalAmount, updateItemQuantity, removeCartItem, items, loading } = useCart();
 
   const form = useForm<CheckoutFormValues>({
@@ -29,8 +31,23 @@ const CheckoutPage = () => {
     },
   });
 
-  const onSubmit = (data: CheckoutFormValues) => {
-    console.log(data);
+  const onSubmit = async (data: CheckoutFormValues) => {
+    try {
+      setSubmitting(true);
+
+      const url = await createOrder(data);
+
+      toast.error('Заказ успешно оформлен! 📝 Переход на оплату... ', {
+        icon: '✅',
+      });
+
+      if (url) location.href = url;
+    } catch (error) {
+      setSubmitting(false);
+      toast.error('Не удалось создать заказ', {
+        icon: '❌',
+      });
+    }
   };
 
   const onClickCountButton = (id: number, quantity: number, type: 'plus' | 'minus') => {

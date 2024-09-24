@@ -6,6 +6,7 @@ import { FC, useState } from 'react';
 import { RegisterForm } from './forms/register-form';
 import { LoginForm } from './forms/login-form';
 import { Button } from '@/shared/components/ui';
+import { DialogDescription, DialogTitle } from '@radix-ui/react-dialog';
 
 interface Props {
   open: boolean;
@@ -25,6 +26,8 @@ export const AuthModal: FC<Props> = ({ open, onClose }) => {
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
+      <DialogTitle />
+      <DialogDescription />
       <DialogContent className="w-[450px] bg-white p-10">
         {type === 'login' ? (
           <LoginForm onClose={handleClose} />

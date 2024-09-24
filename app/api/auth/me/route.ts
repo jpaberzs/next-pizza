@@ -1,13 +1,13 @@
 import prisma from '@/prisma/prisma-client';
-import { NextApiRequest } from 'next';
+// import { NextApiRequest } from 'next';
 import { getServerSession } from 'next-auth/next';
 import { NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET(req: NextApiRequest) {
+export async function GET() {
   try {
-    const session = await getServerSession(req);
+    const session = await getServerSession();
 
     if (!session) {
       return NextResponse.json({ message: 'Вы не авторизованы' }, { status: 401 });

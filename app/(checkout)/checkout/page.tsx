@@ -37,7 +37,6 @@ const CheckoutPage = () => {
   useEffect(() => {
     async function fetchUserInfo() {
       const data = await Api.auth.getMe();
-      console.log(data);
 
       const [firstName, lastName] = data.fullName.split(' ');
 

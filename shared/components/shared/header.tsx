@@ -1,14 +1,13 @@
 'use client';
 
 import { cn } from '@/shared/lib/utils';
-import { FC, useEffect } from 'react';
-import { CartButton, Container, SearchInput } from '@/shared/components/shared';
-import { Button } from '@/shared/components/ui';
-import { User } from 'lucide-react';
+import { FC, useEffect, useState } from 'react';
+import { CartButton, Container, ProfileButton, SearchInput } from '@/shared/components/shared';
 import Image from 'next/image';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { AuthModal } from './modals/auth-modal/auth-modal';
 
 interface Props {
   isCheckout?: boolean;
@@ -17,6 +16,7 @@ interface Props {
 
 export const Header: FC<Props> = ({ isCheckout = true, className }) => {
   const router = useRouter();
+  const [openAuthModal, setOpenAuthModal] = useState(false);
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -58,10 +58,8 @@ export const Header: FC<Props> = ({ isCheckout = true, className }) => {
           </div>
         )}
         <div className="flex items-center gap-3">
-          <Button variant="outline" className="flex items-center gap-1">
-            <User size={16} />
-            Войти
-          </Button>
+          <AuthModal open={openAuthModal} onClose={() => setOpenAuthModal(false)} />
+          <ProfileButton onClickSignIn={() => setOpenAuthModal(true)} />
           {isCheckout && (
             <div>
               <CartButton />

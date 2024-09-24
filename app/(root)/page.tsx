@@ -2,7 +2,6 @@ import {
   Container,
   Title,
   Categories,
-  SortPopup,
   Filters,
   ProductsGroupList,
 } from '@/shared/components/shared';
@@ -21,7 +20,7 @@ export default async function Home({ searchParams }: { searchParams: GetSearchPa
       <div className="sticky top-0 z-20 bg-white py-5 shadow-lg shadow-black/5">
         <Container className="flex items-center justify-between">
           <Categories items={categories.filter((category) => category.products.length > 0)} />
-          <SortPopup />
+          {/* <SortPopup /> */}
         </Container>
       </div>
       <Container className="mt-10 pb-14">

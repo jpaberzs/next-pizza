@@ -1,3 +1,6 @@
+export { InfoBlock } from './info-block';
+export { ProfileForm } from './profile-form';
+export { ProfileButton } from './profile-button';
 export { AdressInput } from './address-input';
 export { CheckoutItemDetails } from './checkout-item-details';
 export { CheckoutItemSkeleton } from './checkout-item-skeleton';

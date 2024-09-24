@@ -26,8 +26,8 @@ export const AuthModal: FC<Props> = ({ open, onClose }) => {
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogTitle />
-      <DialogDescription />
+      <DialogTitle hidden={true} />
+      <DialogDescription hidden={true} />
       <DialogContent className="w-[450px] bg-white p-10">
         {type === 'login' ? (
           <LoginForm onClose={handleClose} />

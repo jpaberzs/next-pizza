@@ -1,28 +1,21 @@
 import prisma from '@/prisma/prisma-client';
-import { authOptions } from '@/shared/constants/auth-options';
-import { IncomingMessage, ServerResponse } from 'http';
-import { NextApiRequest, NextApiResponse } from 'next';
-import { AuthOptions } from 'next-auth';
+import { NextApiRequest } from 'next';
 import { getServerSession } from 'next-auth/next';
-import { NextApiRequestCookies } from 'next/dist/server/api-utils';
 import { NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET(
-  req: NextApiRequest | (IncomingMessage & { cookies: NextApiRequestCookies }) | AuthOptions,
-  res: ServerResponse<IncomingMessage> | NextApiResponse | AuthOptions,
-) {
+export async function GET(req: NextApiRequest) {
   try {
-    const user = await getServerSession(req as NextApiRequest, res as NextApiResponse, authOptions);
+    const session = await getServerSession(req);
 
-    if (!user) {
+    if (!session) {
       return NextResponse.json({ message: 'Вы не авторизованы' }, { status: 401 });
     }
 
     const data = await prisma.user.findUnique({
       where: {
-        id: Number(user.user.id),
+        id: Number(1),
       },
       select: {
         fullName: true,
